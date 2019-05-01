@@ -13,8 +13,8 @@ function adicionaLista(){
   var dataConta = document.getElementById('dataVencimentoConta')
   var valorConta = document.getElementById('valorConta')
   let conta = new Conta(nomeConta, dataConta, valorConta)
-  arrayConta.push(conta)  
-  console.log(arrayConta)
+  arrayConta.push(conta) 
+  console.log(arrayConta) 
   adicionaNaTabela(conta)
 }
 
@@ -29,7 +29,6 @@ function montaTr(conta){
   contaTr.appendChild(montaTd(conta.nome.value))
   contaTr.appendChild(montaTd(conta.dataVencimento.value))
   contaTr.appendChild(montaTd(conta.valor.value))
-  console.log(tabela.lastChild);
   return contaTr
 }
 
@@ -40,5 +39,8 @@ function montaTd(dado){
 }
 
 function pagar(){
-  
+  let ultimoFilho = tabela.lastChild
+  ultimoFilho.remove()
+  arrayConta.pop()
+  console.log(arrayConta)
 }
