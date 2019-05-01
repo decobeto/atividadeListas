@@ -13,5 +13,9 @@ table, th, td {
 }
 
 .ambasDivs{
-  padding: 6em;
+  padding: 3em;
+}
+
+html{
+  background-color: lightblue;
 }
