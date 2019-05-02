@@ -1,9 +1,17 @@
 var arrayConta = []
+var arrayDesejo = []
 
 class Conta {
   constructor(nome, dataVencimento, valor){
     this.nome = nome
     this.dataVencimento = dataVencimento
+    this.valor = valor
+  }
+}
+
+class Desejo {
+  constructor(nome, valor){
+    this.nome = nome
     this.valor = valor
   }
 }
@@ -24,7 +32,7 @@ function adicionaNaTabela(conta){
 }
 
 function montaTr(conta){
-  var contaTr = document.createElement("tr");
+  var contaTr = document.createElement("tr")
 
   contaTr.appendChild(montaTd(conta.nome.value))
   contaTr.appendChild(montaTd(conta.dataVencimento.value))
@@ -44,3 +52,12 @@ function pagar(){
   arrayConta.pop()
   console.log(arrayConta)
 }
+
+function pagarTudo(){
+  arrayConta = []
+  console.log(arrayConta)
+  let informacaoTabela = document.querySelector("#tabelaConta")
+  console.log(informacaoTabela)
+  informacaoTabela.innerHTML = " ";
+}
+
