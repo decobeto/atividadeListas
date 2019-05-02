@@ -61,3 +61,47 @@ function pagarTudo(){
   informacaoTabela.innerHTML = " ";
 }
 
+function adicionaListaDesejo(){     
+  var nomeDesejo = document.getElementById('nomeDesejos')
+  var valorDesejo = document.getElementById('valorDesejos')
+  let desejo = new Desejo(nomeDesejo, valorDesejo)
+  arrayDesejo.push(desejo) 
+  console.log("Array Desejo:")
+  console.log(arrayDesejo) 
+  console.log("Array Conta:")
+  console.log(arrayConta) 
+  adicionaNaTabelaDesejos(desejo)
+}
+
+function adicionaNaTabelaDesejos(desejo){
+  tabelaDesejo = document.getElementById('tabelaDesejos')
+  tabelaDesejo.appendChild(montaTrDesejos(desejo))
+}
+
+function montaTrDesejos(desejo){
+  var contaTr = document.createElement("tr")
+
+  contaTr.appendChild(montaTd(desejo.nome.value))
+  contaTr.appendChild(montaTd(desejo.valor.value))
+  return contaTr
+}
+
+function comprar(){
+  let primeiroFilho = tabelaDesejo.firstChild
+  primeiroItem = arrayDesejo[0]
+  arrayConta.push(arrayDesejo[0])
+  primeiroFilho.remove()
+  arrayDesejo.shift()
+  //adicionaDesejosNaListaDeCompras(primeiroItem)
+}
+
+function adicionaDesejosNaListaDeCompras(primeiroItem){     
+  let dataHoje = new Date();
+  let dd = String(dataHoje.getDate()).padStart(2, '0');
+  let mm = String(dataHoje.getMonth() + 1).padStart(2, '0');
+  let yyyy = dataHoje.getFullYear();
+  dataHoje = mm + '/' + dd + '/' + yyyy;
+
+  let conta = new Conta(primeiroItem.nome, dataHoje, primeiroItem.valor) 
+  adicionaNaTabela(conta)
+}
