@@ -92,7 +92,7 @@ function comprar(){
   arrayConta.push(arrayDesejo[0])
   primeiroFilho.remove()
   arrayDesejo.shift()
-  //adicionaDesejosNaListaDeCompras(primeiroItem)
+  adicionaDesejosNaListaDeCompras(primeiroItem)
 }
 
 function adicionaDesejosNaListaDeCompras(primeiroItem){     
