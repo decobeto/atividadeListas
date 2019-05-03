@@ -48,6 +48,7 @@ function montaTd(dado){
 
 function pagar(){
   let ultimoFilho = tabela.lastChild
+  console.log(ultimoFilho)
   ultimoFilho.remove()
   arrayConta.pop()
   console.log(arrayConta)
@@ -74,7 +75,7 @@ function adicionaListaDesejo(){
 }
 
 function adicionaNaTabelaDesejos(desejo){
-  tabelaDesejo = document.getElementById('tabelaDesejos')
+  tabelaDesejo = document.querySelector('#tabelaDesejos')
   tabelaDesejo.appendChild(montaTrDesejos(desejo))
 }
 
@@ -87,20 +88,21 @@ function montaTrDesejos(desejo){
 }
 
 function comprar(){
-  let primeiroFilho = tabelaDesejo.firstChild
+  let primeiroFilho = tabelaDesejo.firstElementChild
   primeiroItem = arrayDesejo[0]
   arrayConta.push(arrayDesejo[0])
-  primeiroFilho.remove()
-  arrayDesejo.shift()
   adicionaDesejosNaListaDeCompras(primeiroItem)
+  arrayDesejo.shift()
+  primeiroFilho.remove()
+  console.log(primeiroFilho)
+  console.log("Array Desejo:")
+  console.log(arrayDesejo) 
+  console.log("Array Conta:")
+  console.log(arrayConta)
 }
 
 function adicionaDesejosNaListaDeCompras(primeiroItem){     
   let dataHoje = new Date();
-  let dd = String(dataHoje.getDate()).padStart(2, '0');
-  let mm = String(dataHoje.getMonth() + 1).padStart(2, '0');
-  let yyyy = dataHoje.getFullYear();
-  dataHoje = mm + '/' + dd + '/' + yyyy;
 
   let conta = new Conta(primeiroItem.nome, dataHoje, primeiroItem.valor) 
   adicionaNaTabela(conta)
