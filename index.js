@@ -94,7 +94,6 @@ function comprar(){
   adicionaDesejosNaListaDeCompras(primeiroItem)
   arrayDesejo.shift()
   primeiroFilho.remove()
-  console.log(primeiroFilho)
   console.log("Array Desejo:")
   console.log(arrayDesejo) 
   console.log("Array Conta:")
@@ -106,4 +105,11 @@ function adicionaDesejosNaListaDeCompras(primeiroItem){
 
   let conta = new Conta(primeiroItem.nome, dataHoje, primeiroItem.valor) 
   adicionaNaTabela(conta)
+}
+
+function comprarTudo(){
+  let totalArray = arrayDesejo.length
+  for (let index = 0; index < totalArray; index++) {
+    comprar()
+  }
 }
