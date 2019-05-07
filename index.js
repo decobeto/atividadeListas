@@ -93,8 +93,10 @@ function montaTrDesejos(desejo){
 function comprar(){
   let primeiroFilho = tabelaDesejo.firstElementChild
   primeiroItem = arrayDesejo[0]
+  let nome = primeiroItem.nome
+  let valor = primeiroItem.valor
   arrayConta.push(arrayDesejo[0])
-  adicionaDesejosNaListaDeCompras(primeiroItem)
+  adicionaDesejosNaListaDeCompras(nome, valor)
   arrayDesejo.shift()
   primeiroFilho.remove()
   console.log("Array Desejo:")
@@ -103,11 +105,24 @@ function comprar(){
   console.log(arrayConta)
 }
 
-function adicionaDesejosNaListaDeCompras(primeiroItem){     
+function adicionaDesejosNaListaDeCompras(nome, valor){     
   let dataHoje = new Date();
+  let conta = new Conta(nome, dataHoje, valor) 
+  adicionaDesejoNaTabela(conta)
+}
 
-  let conta = new Conta(primeiroItem.nome, dataHoje, primeiroItem.valor) 
-  adicionaNaTabela(conta)
+function adicionaDesejoNaTabela(conta){
+  tabela = document.getElementById('tabelaConta')
+  tabela.appendChild(montaTrDesejoNaConta(conta))
+}
+
+function montaTrDesejoNaConta(conta){
+  var contaTr = document.createElement("tr")
+
+  contaTr.appendChild(montaTd(conta.nome))
+  contaTr.appendChild(montaTd(conta.dataVencimento))
+  contaTr.appendChild(montaTd(conta.valor))
+  return contaTr
 }
 
 function comprarTudo(){
