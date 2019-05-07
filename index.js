@@ -63,9 +63,10 @@ function pagarTudo(){
 }
 
 function adicionaListaDesejo(){     
-  var nomeDesejo = document.getElementById('nomeDesejos')
-  var valorDesejo = document.getElementById('valorDesejos')
-  let desejo = new Desejo(nomeDesejo, valorDesejo)
+  let nomeDesejo = document.getElementById('nomeDesejos')
+  let valorDesejo = document.getElementById('valorDesejos')
+  let desejo = new Desejo(nomeDesejo.value, valorDesejo.value)
+  //let desejo = new Desejo(nomeDesejo, valorDesejo)
   arrayDesejo.push(desejo) 
   console.log("Array Desejo:")
   console.log(arrayDesejo) 
@@ -82,8 +83,10 @@ function adicionaNaTabelaDesejos(desejo){
 function montaTrDesejos(desejo){
   var contaTr = document.createElement("tr")
 
-  contaTr.appendChild(montaTd(desejo.nome.value))
-  contaTr.appendChild(montaTd(desejo.valor.value))
+  //contaTr.appendChild(montaTd(desejo.nome.value))
+  //contaTr.appendChild(montaTd(desejo.valor.value))
+  contaTr.appendChild(montaTd(desejo.nome))
+  contaTr.appendChild(montaTd(desejo.valor))
   return contaTr
 }
 
